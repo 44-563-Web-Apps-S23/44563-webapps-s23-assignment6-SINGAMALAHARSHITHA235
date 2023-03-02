@@ -37,11 +37,35 @@ function checkPainter (){
     } else {
         oops++
         out.innerHTML = "Right answer:"+ good +" Wrong answer:"+ oops
-        alert("Sorry")
-        good = 0
-        oops= 0
+        alert("Sorry");
     }
+    document.getElementById("results").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
 }
+</script>
+<div class="container">
+    <img id="pic" src="Ageratum.jpg" height="100" weight="100" onclick="selectImage()">
+</div>
+
+<script>
+    var useImage=1
+    var img=document.getElementById("pic")
+    function selectImage(){
+        switch(useImage){
+            case 1:
+                img.src="Ageratum.jpg"
+                useImage++
+                break
+            case 2:
+                img.src="Nasturtium.jpg"
+                useImage++
+                break
+            case 3:
+                img.src="Gentian.jpg"
+                useImage=1
+                break
+            default:
+        }
+    }
 </script>
 
 </body>
