@@ -10,45 +10,52 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_pwd">The hidden Painter name :</label>
-    <input type ="password" id="form1_pwd" name="form1_pwd"  value="Monet"> <br>
+    <label for="form1_passw">The hidden painter name</label>
+    <input type ="password" id="form1_passw" name="form1_passw" value="Monet"> <br>
 
-    <label for="form1_gp">Guess the painter </label>
-    <input type ="text" id="form1_gp" name="form1_gp" autofocus> <br>
+    <label for="form1_guessp">Guess the painter</label>
+    <input type ="text" id="form1_guessp" name="form1_guessp"> <br>
 
     <input type="button" onclick="checkPainter()" value="Check the guess">
 </form>
 <p id="result">count will display here</p>
-
 <script> 
 good=0
 oops=0
 function checkPainter (){
     console.log("Getting form values")
-    painter = document.getElementById("form1_pwd").value
-    guess = document.getElementById("form1_gp").value
+    PainterN = document.getElementById("form1_passw").value
+    GuessN = document.getElementById("form1_guessp").value
     
-    
-    out = document.getElementById("result")
-    if(painter == guess){
+   
+    if(PainterN==GuessN){
         good++;
-        out.innerHTML = "Right answer:"+ good +" Wrong answer:"+ oops
+      
         alert("You got it right");
     } else {
-        oops++
-        out.innerHTML = "Right answer:"+ good +" Wrong answer:"+ oops
+        oops++;
+     
         alert("Sorry");
     }
-    document.getElementById("results").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
+    if(oops>=10){
+       ShowAlert()
+       document.getElementById('togglee').style.visibility = 'hidden';
+    
+    }
+     document.getElementById("result").innerHTML="correct "+good+" wrong "+oops;
+}
+
+function ShowAlert(){
+    alert("Sorry, ran out of guesses")
+    
 }
 </script>
 <div class="container">
-    <img id="pic" src="Ageratum.jpg" height="100" weight="100" onclick="selectImage()">
+    <img id="picture" src="Gentian.jpg" height="100" weight="100" onclick="selectImage()">
 </div>
-
 <script>
     var useImage=1
-    var img=document.getElementById("pic")
+    var img=document.getElementById("picture")
     function selectImage(){
         switch(useImage){
             case 1:
@@ -56,11 +63,11 @@ function checkPainter (){
                 useImage++
                 break
             case 2:
-                img.src="Nasturtium.jpg"
+                img.src="Gentian.jpg"
                 useImage++
                 break
             case 3:
-                img.src="Gentian.jpg"
+                img.src="Nasturtium.jpg"
                 useImage=1
                 break
             default:
@@ -68,5 +75,6 @@ function checkPainter (){
     }
 </script>
 
+
 </body>
-</html>
+</html> 

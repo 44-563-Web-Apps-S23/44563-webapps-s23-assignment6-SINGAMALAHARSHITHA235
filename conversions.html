@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>currency conversions</title>
+    <title>conversion page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" 
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+</head>
+
+ 
+<body>
+
+<h2>Harshitha Singamala shows currency conversions</h2>
+
+<form>
+    <label for="form1_amount">Enter base amount</label>
+    <input type ="number" id="form1_amount" name="form1_amount" value=50> <br>
+
+    <label for="form1_rate">Enter the conversion rate.</label>
+    <input type ="number" id="form1_rate" name="form1_rate" value=35> <br>
+
+    <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="convert()">Show conversions </button>
+    
+</form>
+
+
+<p id="result">value is converted value</p>
+
+<script> 
+
+function convert (){
+    
+    baseamt = document.getElementById("form1_amount").value
+    convrate = document.getElementById("form1_rate").value
+    toShow = ""
+    for (i = 1; i <= 5; i++) {
+        toShow = baseamt +" is "+ Math.round(convrate*baseamt*100)/100+"; "+
+                 baseamt*2+" is " +Math.round(convrate*baseamt*2*100)/100+ "; "+
+                 baseamt*4 +" is " +Math.round(convrate*baseamt*4*100)/100+ "; "+
+                 baseamt*8 +" is " +Math.round(convrate*baseamt*8*100)/100+ "; "+
+                 baseamt*16 + " is " +Math.round(convrate*baseamt*16*100)/100+ "; "
+        }
+    out = document.getElementById("result")
+    if(toShow){
+        out.innerHTML = "Conversions are: " + toShow
+    } 
+}
+</script>
+
+<form>
+     <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <input type="radio" id="average" name="sele" value="mean" onclick="chooseOp()" >
+    <label for="average">average</label></br>
+  
+  
+    <input type="radio" id="max" name="sele" value="maximum" onclick="chooseOp()" >
+    <label for="max">maximum</label></br>
+  
+    <input type="radio" id="min" name="sele" value="minimum" onclick="chooseOp()" >
+    <label for="min">minimum</label></br>
+    </div>
+ 
+</form>
+<p id="resultRadio">the result for radio button will be displayed here</p>
+
+<script>
+    
+    function chooseOp(){
+              baseamt = document.getElementById("form1_amount").value
+              convamt = document.getElementById("form1_rate").value
+
+              out = document.getElementById("resultRadio")
+
+              if((document.getElementById("average").checked)){
+                  result = ((baseamt*1+convamt*1)/2)
+                  out.innerHTML = "Average of "+baseamt+" and "+convamt+" is "+result
+              }
+              if((document.getElementById('max').checked)){
+                   if(baseamt>convamt)
+                     result = baseamt
+                   else
+                     result=convamt
+
+                     out.innerHTML = "Max of "+baseamt+" and "+convamt+" is "+result
+              }
+              if((document.getElementById('min').checked)){
+                if(baseamt<convamt)
+                     result = baseamt
+                   else
+                     result=convamt
+
+                out.innerHTML = "Min of "+baseamt+" and "+convamt+" is "+result
+              }
+            
+          }
+ </script>
+</body>
+</html> 
